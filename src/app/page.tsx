@@ -1,4 +1,3 @@
-import UnderConstruction from "../common/under-construction";
 import Hero from "./hero";
 import Saloons from "./saloons";
 

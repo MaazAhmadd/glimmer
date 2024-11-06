@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useLayoutEffect, useState } from "react";
 
 export const screenBreakpoints = {
@@ -13,6 +14,7 @@ export function useCurrentBreakpoint() {
 	const [breakpoint, setBreakpoint] = useState<Breakpoints>("xs");
 
 	useLayoutEffect(() => {
+		if (window === undefined) return;
 		const updateBreakpoint = () => {
 			const width = window.innerWidth;
 			let newBreakpoint: Breakpoints = "xs";
@@ -33,11 +35,12 @@ export function useCurrentBreakpoint() {
 }
 export function useWindowSize() {
 	const [windowSize, setWindowSize] = useState({
-		width: window.innerWidth,
-		height: window.innerHeight,
+		width: typeof window !== "undefined" ? window.innerWidth : 0,
+		height: typeof window !== "undefined" ? window.innerHeight : 0,
 	});
 
 	useEffect(() => {
+		if (window === undefined) return;
 		const handleResize = () => {
 			setWindowSize({
 				width: window.innerWidth,
