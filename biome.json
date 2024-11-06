@@ -33,7 +33,9 @@
 			},
 			"a11y": {
 				"useKeyWithClickEvents": "off",
-				"useButtonType": "off"
+				"useButtonType": "off",
+				"useSemanticElements": "warn",
+				"noNoninteractiveTabindex": "warn"
 			},
 			"nursery": {
 				"useSortedClasses": "info"
