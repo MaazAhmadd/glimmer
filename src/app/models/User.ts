@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import { Schema, Document } from "mongoose";
+import mongoose, { Schema, Model } from "mongoose";
 
-interface GlimmerUser extends Document {
+export interface GlimmerUser {
+  _id: mongoose.Types.ObjectId;
   name: string;
   email: string;
   password: string;
@@ -15,7 +15,7 @@ interface GlimmerUser extends Document {
   updatedAt: Date;
 }
 
-const UserSchema = new Schema<GlimmerUser>(
+const UserSchema: Schema<GlimmerUser> = new Schema<GlimmerUser>(
   {
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -34,7 +34,7 @@ const UserSchema = new Schema<GlimmerUser>(
   { timestamps: true }
 );
 
-const User =
+const User: Model<GlimmerUser> =
   mongoose.models.User || mongoose.model<GlimmerUser>("User", UserSchema);
 
-console.log(User);
+export default User;

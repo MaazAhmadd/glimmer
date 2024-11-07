@@ -1,42 +1,42 @@
 import mongoose from "mongoose";
+
 declare global {
-  var mongoose: any; // This must be a `var` and not a `let / const`
+  var mongoose: {
+    conn: mongoose.Connection | null;
+    promise: Promise<mongoose.Connection> | null;
+  };
 }
-
+if (!global.mongoose) {
+  global.mongoose = { conn: null, promise: null };
+}
 const MONGODB_URI = process.env.MONGODB_URI!;
-
 if (!MONGODB_URI) {
   throw new Error(
-    "Please define the MONGODB_URI environment variable inside .env.local"
+    "Please define the MONGODB_URI environment variable inside .env file"
   );
 }
-
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
 async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
+  if (global.mongoose.conn) {
+    return global.mongoose.conn;
   }
-  if (!cached.promise) {
+
+  if (!global.mongoose.promise) {
     const opts = {
       bufferCommands: false,
     };
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
-  }
-  try {
-    cached.conn = await cached.promise;
-  } catch (e) {
-    cached.promise = null;
-    throw e;
+    global.mongoose.promise = mongoose
+      .connect(MONGODB_URI, opts)
+      .then((mongoose) => mongoose.connection);
   }
 
-  return cached.conn;
+  try {
+    global.mongoose.conn = await global.mongoose.promise;
+  } catch (error) {
+    global.mongoose.promise = null;
+    throw error;
+  }
+
+  return global.mongoose.conn;
 }
 
 export default dbConnect;
