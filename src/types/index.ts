@@ -1,7 +1,7 @@
 type SaloonType = {
-	name: string;
-	address: string;
-	rating: number;
-	image: string;
+  name: string;
+  address: string;
+  rating: number;
+  image: string;
 };
 export type { SaloonType };
