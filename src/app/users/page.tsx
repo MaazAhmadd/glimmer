@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import dbConnect from "@/lib/mongoose";
-import User from "../models/User";
+import User from "../../mongoose-models/User";
 import Link from "next/link";
 
 export default async function UserData() {

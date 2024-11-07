@@ -3,7 +3,7 @@ import * as React from "react";
 import HeroImg1 from "@/assets/images/home-hero-img-1.png";
 import HeroImg2 from "@/assets/images/home-hero-img-2.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay} from "swiper/modules";
 
 const Hero = () => {
 	return (
