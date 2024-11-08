@@ -2,11 +2,8 @@
 "use client";
 
 import React from "react";
-import { updateUser } from "./action";
 import dbConnect from "@/lib/mongoose";
 import User from "@/mongoose-models/User";
-import { notFound } from "next/navigation";
-import UpdateUserForm from "./UpdateUserForm";
 import { updateUser } from "./action";
 
 interface Params {
