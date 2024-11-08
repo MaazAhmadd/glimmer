@@ -65,22 +65,26 @@ const SaloonCardList = ({ saloons = [] }: Props) => {
 					},
 				];
 	return (
-		<CardList
-			cards={allSaloons.map((s) => {
-				return {
-					title: s.name,
-					subtitle: s.address,
-					titleAddon: (
-						<>
-							<FaRegStar /> &nbsp; {s.rating}
-						</>
-					),
-					image: s.image,
-					actionBtnText: "Book Now",
-				};
-			})}
-			title="Saloons"
-		/>
+		<>
+			<div className="prose lg:prose-xl mb-2">
+				<h2>Saloons</h2>
+			</div>
+			<CardList
+				cards={allSaloons.map((s) => {
+					return {
+						title: s.name,
+						subtitle: s.address,
+						titleAddon: (
+							<>
+								<FaRegStar /> &nbsp; {s.rating}
+							</>
+						),
+						image: s.image,
+						actionBtnText: "Book Now",
+					};
+				})}
+			/>
+		</>
 	);
 };
 

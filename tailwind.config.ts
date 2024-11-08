@@ -10,12 +10,12 @@ const config: Config = {
 			// false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
 			{
 				light: {
-					primary: "#edc539",
-					"primary-content": "#9b6d00",
+					primary: "#ffc759",
+					"primary-content": "#ebe9f7",
 					secondary: "#73449d",
-					"secondary-content": "#d993ff",
+					"secondary-content": "#ebe9f7",
 					accent: "#f87171",
-					"accent-content": "#793e3e",
+					"accent-content": "#ebe9f7",
 					neutral: "#0d0809",
 					"neutral-content": "#c8c6c6",
 					"base-100": "#ebe9f7",
