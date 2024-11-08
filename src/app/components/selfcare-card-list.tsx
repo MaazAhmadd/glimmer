@@ -65,22 +65,26 @@ const SeftcareCardList = ({ selfcareItems = [] }: Props) => {
 					},
 				];
 	return (
-		<CardList
-			cards={allSelfcareItems.map((s) => {
-				return {
-					title: s.title,
-					subtitle: String(s.price) + " PKR",
-					titleAddon: (
-						<>
-							<FaRegStar /> &nbsp; {s.rating}
-						</>
-					),
-					image: s.image,
-					actionBtnText: "Buy Now",
-				};
-			})}
-			title="Self-Care Items"
-		/>
+		<>
+			<div className="prose lg:prose-xl mb-2">
+				<h2>Self-Care Items</h2>
+			</div>
+			<CardList
+				cards={allSelfcareItems.map((s) => {
+					return {
+						title: s.title,
+						subtitle: String(s.price) + " PKR",
+						titleAddon: (
+							<>
+								<FaRegStar /> &nbsp; {s.rating}
+							</>
+						),
+						image: s.image,
+						actionBtnText: "Buy Now",
+					};
+				})}
+			/>
+		</>
 	);
 };
 
