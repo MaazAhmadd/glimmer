@@ -65,7 +65,7 @@ const SaloonCardList = ({ saloons = [] }: Props) => {
 					},
 				];
 	return (
-		<>
+		<div className="px-2">
 			<div className="prose lg:prose-xl mb-2">
 				<h2>Saloons</h2>
 			</div>
@@ -84,7 +84,7 @@ const SaloonCardList = ({ saloons = [] }: Props) => {
 					};
 				})}
 			/>
-		</>
+		</div>
 	);
 };
 

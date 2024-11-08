@@ -189,7 +189,7 @@ const CardList = ({ cards = [] }: Props) => {
 						style={{
 							flex: "0 0 auto",
 						}}
-						className={cn(" mr-4 w-[280px] bg-secondary shadow-xl ")}
+						className={cn("mr-4 w-[280px] bg-secondary shadow-xl md:mr-8 ")}
 					>
 						<figure>
 							<img

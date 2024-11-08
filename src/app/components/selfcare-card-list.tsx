@@ -65,7 +65,7 @@ const SeftcareCardList = ({ selfcareItems = [] }: Props) => {
 					},
 				];
 	return (
-		<>
+		<div className="px-2">
 			<div className="prose lg:prose-xl mb-2">
 				<h2>Self-Care Items</h2>
 			</div>
@@ -84,7 +84,7 @@ const SeftcareCardList = ({ selfcareItems = [] }: Props) => {
 					};
 				})}
 			/>
-		</>
+		</div>
 	);
 };
 
