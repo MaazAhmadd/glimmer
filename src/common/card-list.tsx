@@ -221,32 +221,4 @@ const CardList = ({ cards = [] }: Props) => {
 
 export default CardList;
 
-const Card = ({
-	cardItem,
-	className,
-}: {
-	cardItem: CardType;
-	className?: string;
-}) => {
-	return (
-		<div className={cn(" w-[300px] bg-secondary shadow-xl ", className)}>
-			<figure>
-				<img src={cardItem.image} alt={cardItem.image} />
-			</figure>
-			<div className=" gap-1 text-secondary-content">
-				<div className="flex items-center justify-between">
-					<h2 className=" text-base-100 ">{cardItem.title}</h2>
-					<span className="flex items-center text-base-100">
-						{cardItem.titleAddon}
-					</span>
-				</div>
-				<p className="text-base-100">{cardItem.subtitle}</p>
-				<div className=" justify-end">
-					<button className="btn btn-base bg-base-100 text-base-content capitalize">
-						{cardItem.actionBtnText}
-					</button>
-				</div>
-			</div>
-		</div>
-	);
-};
+ 
