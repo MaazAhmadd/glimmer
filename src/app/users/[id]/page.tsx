@@ -1,6 +1,6 @@
 // app/user/[id]/page.tsx
 import dbConnect from "@/lib/mongoose";
-import User from "@/app/models/User";
+import User from "@/mongoose-models/User";
 import { notFound } from "next/navigation";
 
 interface Params {

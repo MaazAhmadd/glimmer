@@ -29,7 +29,8 @@
 				"noVar": "warn"
 			},
 			"correctness": {
-				"useExhaustiveDependencies": "warn"
+				"useExhaustiveDependencies": "warn",
+				"noEmptyPattern": "warn"
 			},
 			"a11y": {
 				"useKeyWithClickEvents": "off",
