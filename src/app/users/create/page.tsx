@@ -1,103 +1,115 @@
 // app/users/create/page.tsx
 "use client";
 
-import React from "react";
-import { useFormState, useFormStatus } from "react-dom"; // Ensure correct import
+import React, { useActionState } from "react";
 import { createUser } from "./action";
-import SubmitButton from "./SubmitButton";
-
-// Define the form state type
-type FormState = {
-  message: string;
-  errors: {
-    name?: string;
-    email?: string;
-    password?: string;
-    gender?: string;
-    age?: string;
-    city?: string;
-    area?: string;
-  };
-};
-
-const initialState: FormState = {
-  message: "",
-  errors: {},
-};
 
 export default function UserForm() {
-  const [state, formAction] = useFormState(createUser, initialState);
-  const { pending } = useFormStatus();
+  const [data, action, isPending] = useActionState(createUser, undefined);
+  const { name, email, password, gender, age, city, area } =
+    data?.fieldData?.result?.data || {};
 
   return (
     <div>
       <h1>Create User</h1>
-      <form action={formAction}>
+      <form action={action} className="p-5">
         {/* Name */}
         <div>
           <label htmlFor="name">Name:</label>
-          <input type="text" name="name" id="name" required />
-          {state.errors?.name && <p className="error">{state.errors.name}</p>}
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            defaultValue={name}
+          />
         </div>
 
         {/* Email */}
         <div>
           <label htmlFor="email">Email:</label>
-          <input type="email" name="email" id="email" required />
-          {state.errors?.email && <p className="error">{state.errors.email}</p>}
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            defaultValue={email}
+          />
         </div>
 
         {/* Password */}
         <div>
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="password" required />
-          {state.errors?.password && (
-            <p className="error">{state.errors.password}</p>
-          )}
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            defaultValue={password}
+          />
         </div>
 
         {/* Gender */}
         <div>
           <label htmlFor="gender">Gender:</label>
-          <select name="gender" id="gender" required>
+          <select name="gender" id="gender" required defaultValue={gender}>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Unisex">Unisex</option>
           </select>
-          {state.errors?.gender && (
-            <p className="error">{state.errors.gender}</p>
-          )}
         </div>
 
         {/* Age */}
         <div>
           <label htmlFor="age">Age:</label>
-          <input type="number" name="age" id="age" min="0" required />
-          {state.errors?.age && <p className="error">{state.errors.age}</p>}
+          <input
+            type="number"
+            name="age"
+            id="age"
+            min="0"
+            required
+            defaultValue={age}
+          />
         </div>
 
         {/* City */}
         <div>
           <label htmlFor="city">City:</label>
-          <input type="text" name="city" id="city" required />
-          {state.errors?.city && <p className="error">{state.errors.city}</p>}
+          <input
+            type="text"
+            name="city"
+            id="city"
+            required
+            defaultValue={city}
+          />
         </div>
 
         {/* Area */}
         <div>
           <label htmlFor="area">Area:</label>
-          <input type="text" name="area" id="area" required />
-          {state.errors?.area && <p className="error">{state.errors.area}</p>}
+          <input
+            type="text"
+            name="area"
+            id="area"
+            required
+            defaultValue={area}
+          />
         </div>
 
-        {/* Submit Button */}
-        <SubmitButton />
+        <button
+          type="submit"
+          disabled={isPending}
+          aria-disabled={isPending}
+          className="btn btn-success text-white"
+        >
+          {isPending ? "Adding User..." : "Add User"}
+        </button>
+        {data?.message && (
+          <span style={{ color: "green" }}>{data?.message}</span>
+        )}
 
-        {/* Message Display */}
-        {state.message && (
-          <p aria-live="polite" role="status" className="sr-only">
-            {state.message}
-          </p>
+        {data?.errors && (
+          <span style={{ color: "red" }}>{data?.errors.toString()}</span>
         )}
       </form>
     </div>
