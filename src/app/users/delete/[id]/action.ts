@@ -3,7 +3,7 @@
 
 import { revalidatePath } from "next/cache";
 import dbConnect from "@/lib/mongoose";
-import User from "@/app/models/User";
+import User from "@/mongoose-models/User";
 
 export async function deleteUser(id: string) {
   try {

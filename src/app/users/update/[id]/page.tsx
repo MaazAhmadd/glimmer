@@ -1,7 +1,7 @@
 // app/users/[id]/page.tsx
 import React from "react";
 import dbConnect from "@/lib/mongoose";
-import User from "@/app/models/User";
+import User from "@/mongoose-models/User";
 import { notFound } from "next/navigation";
 import UpdateUserForm from "./UpdateUserForm";
 import { updateUser } from "./action";

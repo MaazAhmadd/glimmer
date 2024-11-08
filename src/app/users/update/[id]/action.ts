@@ -3,7 +3,7 @@
 
 import { revalidatePath } from "next/cache";
 import dbConnect from "@/lib/mongoose";
-import User from "@/app/models/User";
+import User from "@/mongoose-models/User";
 import bcrypt from "bcryptjs";
 
 export async function updateUser(formData: FormData) {
